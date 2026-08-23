@@ -62,4 +62,8 @@ static const uint8_t T14 = 14;
 #define TFT_WIDTH  240
 #define TFT_HEIGHT 320
 
+#define SPI_FREQUENCY       10000000
+#define SPI_READ_FREQUENCY  10000000
+#define SPI_TOUCH_FREQUENCY  1000000
+
 #endif /* Pins_Arduino_h */
