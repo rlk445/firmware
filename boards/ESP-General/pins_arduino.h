@@ -58,9 +58,10 @@ static const uint8_t T12 = 12;
 static const uint8_t T13 = 13;
 static const uint8_t T14 = 14;
 
-#define ILI9341_DRIVER
+#define ST7789_DRIVER
 #define TFT_WIDTH  240
 #define TFT_HEIGHT 320
+#define TFT_RGB_ORDER TFT_BGR
 
 #define SPI_FREQUENCY       10000000
 #define SPI_READ_FREQUENCY  10000000
