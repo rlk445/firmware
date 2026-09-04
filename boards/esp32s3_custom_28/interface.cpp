@@ -3,6 +3,13 @@
 #include <Arduino.h>
 #include <interface.h>
 
+#ifndef TFT_BRIGHT_FREQ
+#define TFT_BRIGHT_FREQ 5000
+#endif
+#ifndef TFT_BRIGHT_Bits
+#define TFT_BRIGHT_Bits 8
+#endif
+
 #define XPT2046_CS TOUCH_CS
 
 /***************************************************************************************
@@ -53,9 +60,17 @@ void _post_setup_gpio() {
     ledcWrite(TFT_BL, 255);
 }
 
+/***************************************************************************************
+** Function name: getBattery()
+** Description:   sem circuito de bateria nesse setup
+***************************************************************************************/
 int getBattery() { return 0; }
+
 bool isCharging() { return false; }
 
+/*********************************************************************
+** Function: setBrightness
+**********************************************************************/
 void _setBrightness(uint8_t brightval) {
     int dutyCycle;
     if (brightval == 100) dutyCycle = 255;
@@ -67,6 +82,9 @@ void _setBrightness(uint8_t brightval) {
     ledcWrite(TFT_BL, dutyCycle);
 }
 
+/*********************************************************************
+** Function: InputHandler
+**********************************************************************/
 void InputHandler(void) {
     static long d_tmp = 0;
     if (millis() - d_tmp > 200 || LongPress) {
@@ -100,6 +118,9 @@ void InputHandler(void) {
     }
 }
 
+/*********************************************************************
+** Function: powerOff
+**********************************************************************/
 void powerOff() {
     esp_sleep_enable_ext0_wakeup(GPIO_NUM_0, LOW);
     esp_deep_sleep_start();
