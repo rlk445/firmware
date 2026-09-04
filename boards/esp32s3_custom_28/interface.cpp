@@ -1,4 +1,6 @@
 #include "core/powerSave.h"
+#include "core/utils.h"
+#include <Arduino.h>
 #include <interface.h>
 
 #define XPT2046_CS TOUCH_CS
@@ -20,6 +22,7 @@ void _setup_gpio() {
 ** Description:   second stage gpio setup (touch calibration + backlight)
 ***************************************************************************************/
 void _post_setup_gpio() {
+#if defined(USE_TFT_eSPI_TOUCH)
     pinMode(TOUCH_CS, OUTPUT);
     uint16_t calData[5];
     File caldata = LittleFS.open("/calData", "r");
@@ -43,23 +46,16 @@ void _post_setup_gpio() {
         caldata.close();
     }
     tft.setTouch(calData);
+#endif
 
     pinMode(TFT_BL, OUTPUT);
     ledcAttach(TFT_BL, TFT_BRIGHT_FREQ, TFT_BRIGHT_Bits);
     ledcWrite(TFT_BL, 255);
 }
 
-/***************************************************************************************
-** Function name: getBattery()
-** Description:   sem circuito de bateria nesse setup
-***************************************************************************************/
 int getBattery() { return 0; }
-
 bool isCharging() { return false; }
 
-/*********************************************************************
-** Function: setBrightness
-**********************************************************************/
 void _setBrightness(uint8_t brightval) {
     int dutyCycle;
     if (brightval == 100) dutyCycle = 255;
@@ -71,12 +67,10 @@ void _setBrightness(uint8_t brightval) {
     ledcWrite(TFT_BL, dutyCycle);
 }
 
-/*********************************************************************
-** Function: InputHandler
-**********************************************************************/
 void InputHandler(void) {
     static long d_tmp = 0;
     if (millis() - d_tmp > 200 || LongPress) {
+#if defined(USE_TFT_eSPI_TOUCH)
         TouchPoint t;
         checkPowerSaveTime();
         bool _IH_touched = tft.getTouch(&t.x, &t.y);
@@ -102,12 +96,10 @@ void InputHandler(void) {
         END:
             d_tmp = millis();
         }
+#endif
     }
 }
 
-/*********************************************************************
-** Function: powerOff
-**********************************************************************/
 void powerOff() {
     esp_sleep_enable_ext0_wakeup(GPIO_NUM_0, LOW);
     esp_deep_sleep_start();
