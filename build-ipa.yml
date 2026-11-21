@@ -1,0 +1,25 @@
+name: Build IPA
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - run: xcodegen generate
+      - name: Build (sem assinatura)
+        run: |
+          xcodebuild -project PS2Launcher.xcodeproj -scheme PS2Launcher \
+            -configuration Release -sdk iphoneos -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build
+      - name: Empacotar IPA
+        run: |
+          mkdir Payload
+          cp -R build/Build/Products/Release-iphoneos/PS2Launcher.app Payload/
+          zip -qr PS2Launcher.ipa Payload
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PS2Launcher-ipa
+          path: PS2Launcher.ipa
