@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="VR Proto">
+<meta name="theme-color" content="#0b1020">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<title>VR Protótipo</title>
+<link rel="stylesheet" href="style.css?v=25">
+</head><body>
+<canvas id="scene"></canvas>
+<video id="cam" playsinline muted autoplay></video>
+<canvas id="preview" width="320" height="240"></canvas>
+<div id="hud"></div>
+<button id="gear" aria-label="Menu">☰</button>
+<div id="joy"><div id="knob"></div></div>
+
+<div id="menu">
+  <div class="hero">
+    <img class="tile" src="icons/icon-192.png" alt="">
+    <div class="heroTxt">
+      <h1>Quarto VR</h1>
+      <p>Rastreamento de cabeça pelo giroscópio e das mãos pela câmera. Depois de iniciar, todo o menu (mãos, câmera, óculos, ambientes) fica dentro do VR: aponte com os dedos e junte polegar e indicador (pinça) para clicar.</p>
+      <input id="ytIn" class="yt" placeholder="🔗 Cole aqui qualquer link: YouTube, vídeo, site… (abre numa janela dentro do VR)" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <div class="heroBtns">
+        <button class="pill primary" id="start">▶ Iniciar</button>
+        <button class="pill" id="install" style="display:none">Instalar app</button>
+      </div>
+    </div>
+  </div>
+  <details class="how"><summary>Como usar</summary>
+    <ol>
+      <li>Toque em <b>Iniciar</b> e permita câmera e sensores.</li>
+      <li>Com o menu aberto, ligue <b>Modo VR</b> em "Ajustes rápidos" antes de colocar o celular no óculos.</li>
+      <li>Aponte com a mão e <b>junte o polegar e o indicador</b> para clicar. Arraste sliders e a lista com a pinça segurada.</li>
+      <li>Para pegar objetos: feche a mão perto deles, ou aponte para eles e belisque (puxe/empurre a mão para aproximar/afastar).</li>
+      <li>Menu fechado? Pince o botão redondo na parte de baixo da visão. Na tela normal: botão ☰ ou segure o dedo 1 s.</li>
+    </ol>
+  </details>
+  <div id="status">Toque em "Iniciar" para liberar sensores e câmera.</div>
+  <pre id="log"></pre>
+</div>
+<script src="vendor/three.min.js"></script>
+<script src="vendor/GLTFLoader.min.js?v=1"></script>
+<script src="vendor/cannon.min.js"></script>
+<script src="vendor/mediapipe/hands.js"></script>
+<script src="js/core.js?v=28"></script>
+<script src="js/handgeo.js?v=25"></script>
+<script src="js/tracker.js?v=25"></script>
+<script src="js/handvis.js?v=25"></script>
+<script src="js/physics.js?v=28"></script>
+<script src="js/controls.js?v=25"></script>
+<script src="js/ui_kit.js?v=28"></script>
+<script src="js/menu.js?v=30"></script>
+<script src="js/surface.js?v=25"></script>
+<script src="js/youtube.js?v=26"></script>
+<script src="js/envs.js?v=27"></script>
+<script src="js/room.js?v=30"></script>
+<script src="js/house.js?v=34"></script>
+<script src="js/outdoor.js?v=35"></script>
+<script src="js/garagem.js?v=3"></script>
+<script src="js/mercado.js?v=5"></script>
+<script src="js/npc.js?v=2"></script>
+<script src="js/zhoppe.js?v=2"></script>
+<script src="js/petcare.js?v=1"></script>
+<script src="js/praca.js?v=1"></script>
+<script src="js/clube.js?v=1"></script>
+<script src="js/modelo.js?v=1"></script>
+<script src="js/pongsim.js?v=25"></script>
+<script src="js/pong.js?v=25"></script>
+<script src="js/sinsim.js?v=25"></script>
+<script src="js/sinuca.js?v=25"></script>
+<script src="js/bsmusic.js?v=25"></script>
+<script src="js/bs.js?v=25"></script>
+<script src="js/main.js?v=25"></script>
+<script src="js/host.js?v=1"></script>
+</body></html>

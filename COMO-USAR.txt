@@ -1,0 +1,74 @@
+SKZ VR — PC FAZ O TRABALHO PESADO, IPHONE SÓ MOSTRA A IMAGEM
+==========================================================
+
+Como funciona
+  - O jogo (3D, física, MediaPipe das mãos com modelo preciso) roda no PC.
+  - O app SKZ VR (IPA) no iPhone mostra o vídeo do jogo, toca o som e envia a câmera (para as mãos) e o giroscópio.
+  - O app gira a imagem na hora com o giroscópio ("Correção de cabeça"), então a cabeça responde sem esperar a rede.
+  - Tudo passa pelo Wi-Fi da sua casa. Não precisa de internet.
+
+O que tem nesta pasta
+  server.js, iniciar.bat ...... servidor do PC (precisa do Node.js)
+  index.html, js/, vendor/ .... o jogo (roda no PC)
+  phone/ ...................... a tela do celular (vira o app IPA)
+  ios/, .github/ .............. projeto do app e receita para gerar o IPA no GitHub
+  LEIAME.txt .................. histórico do jogo (menus, rastreamento etc.)
+
+
+PARTE 1 — GERAR O IPA (só uma vez, ou quando mudar a pasta phone/ ou ios/)
+  1. Crie um repositório no GitHub e suba TODO o conteúdo desta pasta (inclusive a pasta .github).
+  2. No GitHub: Actions > Build IPA > Run workflow. Espere terminar.
+  3. Baixe o arquivo SKZ-VR-ipa (dentro vem o SKZ-VR.ipa) e instale no iPhone como você já fazia (AltStore, Sideloadly etc.).
+  Obs.: se o app antigo "SKZ VR" já estiver instalado, este novo IPA o substitui.
+
+
+PARTE 2 — USAR (toda vez)
+  No PC (Windows)
+  1. Instale o Node.js LTS (nodejs.org) — só na primeira vez.
+  2. Extraia esta pasta (não rode de dentro do zip) e dê dois cliques em iniciar.bat.
+  3. Abre uma janela preta: deixe aberta. Ela mostra o IP do PC (ex.: 192.168.0.15). Anote.
+  4. Abre também uma janela do Chrome/Edge com o jogo e a mensagem "Esperando o celular". Deixe aberta (pode ser pequena, mas não minimize).
+  5. Se o Firewall do Windows perguntar, marque "Redes privadas" e clique em Permitir.
+
+  No iPhone (no mesmo Wi-Fi do PC)
+  6. Abra o app SKZ VR, deixe o celular na horizontal e digite o IP do PC.
+  7. Toque em Conectar. Aceite: Rede local, Movimento e orientação e Câmera.
+  8. O jogo inicia sozinho. A imagem aparece no celular e o som sai pelo celular (ou fone Bluetooth).
+  9. Toque na tela para abrir a barra: Modo VR, Recentralizar, Correção de cabeça, − / + (latência) e Sair.
+ 10. Ligue o Modo VR e ajuste a latência: gire a cabeça olhando algo parado. Se a cena "escorrega" ou balança, mude o valor de 10 em 10 ms até ficar firme (o padrão é 60 ms). O valor fica salvo.
+ 11. Coloque o celular no óculos e use as mãos (aponte e junte polegar + indicador para clicar).
+  No PC, a tecla R recentraliza a visão.
+
+
+CONTROLE COM 2o CELULAR (Galaxy A14 etc.) - v28
+  1. No A14 (mesmo Wi-Fi) abra o Chrome e entre em http://IP-DO-PC:8080/controle (o endereco aparece na janela preta).
+  2. Se a pagina disser que os sensores estao bloqueados: Chrome > chrome://flags/#unsafely-treat-insecure-origin-as-secure > Ativar e digitar http://IP-DO-PC:8080 > Relancar.
+  3. Segure como controle remoto, apontando para frente, e toque em Calibrar. Segure o GATILHO (parte azul) para clicar, pegar e arrastar.
+  Limite: o celular so informa PARA ONDE aponta, nao ONDE esta. Funciona como raio apontador (menus, pegar objetos, Ping-Pong nao). A mao continua vindo da camera.
+
+SE ALGO DER ERRADO
+  (v27) O iniciar.bat agora libera o Firewall sozinho na primeira vez (clique SIM no pedido de administrador) e mostra na janela preta o IP certo entre >>> <<<.
+  IMPORTANTE: depois de atualizar, gere o IPA de novo (Actions > Build IPA) e reinstale. Ao abrir o app, aceite "Rede local".
+  Teste: no Safari do iPhone abra http://IP-DO-PC:8080/info . Se aparecer texto, a rede esta certa.
+  "Não achei o PC":
+     - O IP digitado é o da janela preta? O servidor está aberto? PC e iPhone no mesmo Wi-Fi (não use rede de convidados)?
+     - Firewall do Windows: permita Chrome/Edge e Node.js em "Redes privadas".
+     - iPhone: Ajustes > SKZ VR > Rede local deve estar LIGADO. (Se você negou, ligue aí e reabra o app.)
+     - Alguns roteadores têm "isolamento de clientes/AP": desligue, ou use o ponto de acesso do iPhone com o PC conectado nele.
+  Conectou mas a tela fica preta:
+     - Veja o quadro de diagnóstico no canto do celular (ws / pc / vídeo / quadros).
+     - Toque em "Correção de cabeça" na barra para alternar para o vídeo simples. (O app volta sozinho para o vídeo simples se a correção sair preta.)
+     - Se "pc" não chega em "connected": é rede/firewall (veja acima). Feche o app, abra de novo e reconecte.
+  Sem som: toque uma vez na tela do celular.
+  Imagem travando ou com blocos: pare o servidor e abra de novo assim (menos pixels e menos taxa de bits):
+        iniciar.bat h=540 mbps=8
+     Parâmetros: h = altura do vídeo (360 a 1080, padrão 720), fps (30 a 90, padrão 60), mbps (4 a 40, padrão 16).
+     Wi-Fi 5 GHz perto do roteador faz muita diferença.
+  O vídeo congelou: a janela do jogo no PC foi minimizada ou ficou coberta. Deixe-a visível.
+  Mãos não aparecem: a câmera traseira precisa ver suas mãos (30 a 50 cm, boa luz). Com o Modo VR desligado, o PC mostra a prévia da câmera com o esqueleto da mão.
+
+LIMITES DESTA VERSÃO
+  - O YouTube dentro do VR não aparece (a janela dele não entra no vídeo que vai para o celular).
+  - Vibração não existe no iPhone.
+  - O PC precisa estar ligado e com o servidor aberto.
+  - Não consegui testar num iPhone de verdade: o fluxo foi testado em navegadores simulados. Se algo falhar, anote o que aparece no quadro de diagnóstico do celular e na janela preta.

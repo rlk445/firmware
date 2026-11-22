@@ -1,0 +1,105 @@
+VR Protótipo v26 - FACHADA E BAIRRO ESTILO EUA + CÉU DIA/NOITE
+- A sacada/varanda foi REMOVIDA. No lugar, a frente da casa virou uma casa americana: porch coberto com frontão, colunas e guarda-corpo brancos, 2 degraus de concreto, porta vermelha com almofadas e número 1427, lanternas ao lado da porta, bandeira dos EUA, cadeiras e vasos, lambril azul-acinzentado, venezianas azul-marinho, base de tijolo, chaminé e telhados de duas águas (antes a casa não tinha telhado).
+- Porta de entrada: saia pelo porch, desça os degraus e ande pelo gramado, calçada e rua. A luz do porch acende sozinha ao anoitecer (o interruptor inverte).
+- Rua de bairro americano: gramado na frente da casa e nos quintais, caminho de concreto, calçada, faixa de grama com árvores, meio-fio, asfalto com faixa dupla amarela, casas dos vizinhos dos dois lados da rua, carros estacionados, entrada de carros com aro de basquete, hidrante, postes de luz, poste de energia com fios e árvores ao fundo.
+- CAIXA DE CORREIO na calçada, em frente à casa (número 1427): clique na portinha para abrir/fechar e na bandeirinha vermelha para levantar/baixar.
+- A IMAGEM DE PANORAMA (assets/panorama.jpg) foi REMOVIDA. O fundo agora é um céu gerado por código, com sol, lua, estrelas e nuvens.
+- Horários: Ajustes > Ambiente > Horário (Aurora/sol nascendo, Dia, Tarde, Poente/pôr do sol, Noite) ou o botão Horário em Ajustes rápidos (cada toque avança um horário). A transição é suave e muda o céu, a cor e a direção da luz do sol/lua, a luz dentro da casa, os postes (acendem à noite) e as janelas dos vizinhos. O horário fica salvo.
+- As casas dos vizinhos (dos dois lados da rua) agora têm INTERIOR simples e podem ser visitadas: a porta da frente abre sozinha quando você chega perto (ou clique nela). Dentro: sala com sofá, mesa de centro, tapete e TV; uma divisória com passagem e, atrás, um quarto com cama e guarda-roupa ou uma cozinha com balcão, geladeira e mesa. Janelas de vidro deixam ver o interior de fora. À noite acendem as luzes do teto de algumas casas. O andar de cima das casas de 2 andares é só visual (sem acesso). As garagens são só a porta na fachada.
+- O ambiente "Panorama 360°" virou "Céu 360° (dia/noite)".
+- Arquivos novos: js/outdoor.js. Alterados: js/house.js, js/core.js, js/room.js, js/menu.js, index.html. Removido: assets/panorama.jpg.
+- ATENÇÃO: o arquivo SKZ-VR.ipa que vem no zip é da versão antiga. Para gerar um IPA novo, suba tudo para o GitHub e rode Actions > Build IPA.
+
+VR Protótipo v25.3 - MICRO-ONDAS FUNCIONAL
+- Cozinha, ao lado da pia: clique na porta (puxador) para abrir/fechar. O painel tem visor e botões: +10s, +30s, +1m somam tempo; START liga (sem tempo definido, começa com 30 s); STOP pausa e, se já estiver parado, zera o tempo.
+- Ligado: prato giratório com a caneca, luz interna, zumbido e contagem regressiva no visor. No fim: 3 bipes e o visor pisca END. Abrir a porta durante o uso pausa; com a porta aberta o START não liga e avisa.
+- Arquivo alterado: js/house.js.
+
+VR Protótipo v25.2 - pia da cozinha e soleiras
+- Pia da cozinha refeita: bancada com cuba de inox embutida, borda, ralo, torneira alta (clique para ligar) e jato com marolas.
+- Soleiras: o piso parava nas faces das paredes e deixava um vão sob cada porta (aparecia uma faixa verde do cenário). Fechei as portas do quarto, do pé da escada, da cozinha e da varanda.
+
+VR Protótipo v25.1 - CORREÇÕES DA CASA (realismo)
+- Escada: o patamar do corredor não tinha frontão, então aparecia o cenário de fundo (gramado) pelo vão. Agora há frontão sólido com nariz de degrau e os pisos do andar de cima têm espessura.
+- Pia: bancada com cuba de verdade (paredes inclinadas, ralo), gabinete oco com portas e puxadores, torneira com base, bica e alavanca, jato de água com marolas.
+- Espelho: estava coberto pela moldura (bloco preto). Agora tem moldura e reflexo real do banheiro (só renderiza de perto e dentro do banheiro).
+- Vaso: bolha oval torneada, assento, tampa que abre PARA CIMA (antes afundava no vaso), caixa acoplada, botão de descarga e água que gira e baixa.
+- Chuveiro: ducha presa na parede com tubo e registro (clique no registro ou na ducha), gotas de água, respingo no chão, vidro que embaça com o tempo. O box agora é andável (o vidro bloqueia, a entrada é pelo lado aberto).
+- Geladeira: a dobradiça estava do lado da parede e a porta atravessava a parede ao abrir. Agora a dobradiça fica do lado do balcão, com puxadores, fresta freezer, borracha de vedação e prateleiras na porta.
+- Arquivo alterado: js/house.js (index.html só mudou a versão do cache).
+
+VR Protótipo v25 - TECLADO DE SUPERFÍCIE (estilo Meta Quest)
+- NOVO: teclado para digitar dentro do VR. Abre sozinho em "Alterar link" do YouTube (o prompt() não aparece na tela dividida) e em Ajustes > Mãos > Teclado de superfície > "Abrir teclado (teste)".
+- Na mesa: apoie as duas mãos abertas, com a palma para baixo, numa mesa e fique parado ~1 s. O teclado aparece deitado na mesa. Digite tocando com a ponta dos dedos: o dedo precisa descer e parar na mesa; levante antes de tocar de novo. Dedos que já estavam apoiados não digitam, e mão inteira pousando é ignorada.
+- Flutuante: botão "Flutuante" no painel do teclado. Funciona com a pinça, com o toque na tela e com o teclado do PC (Enter envia, Esc fecha).
+- Camada ?123 com números e símbolos de link (: / . ? = & - _). Tecla ⇧ maiúscula de uma letra. ç disponível.
+- Ajustes: tamanho do teclado, calibrar na mesa ao abrir, precisão alta ao digitar (liga o modelo preciso de mão só enquanto o teclado está aberto) e som das teclas.
+- Enquanto o teclado na mesa está ativo o "Alcance dos braços" fica em 1× (a mão desenhada coincide com a mão real) e volta ao valor anterior ao fechar.
+- Limite do hardware: o celular tem UMA câmera, então a altura do dedo sobre a mesa é estimada (o Quest usa várias câmeras). Use boa luz, mesa lisa e clara, câmera vendo as mãos de cima.
+- RASTREAMENTO (v25): 
+  * Gestos novos: cada dedo é classificado como estendido/enrolado e o polegar como fora/recolhido. Punho agora exige 4 dedos enrolados com o polegar recolhido: apontar, dedo do meio e joia (polegar para cima) NÃO contam mais como punho (antes 3 dedos enrolados já valiam, então apontar e o dedo do meio "seguravam" objetos). O nome do gesto aparece em "Mostrar dados na tela" (D = mão direita, E = esquerda).
+  * Giro da mão: o rótulo esquerda/direita do MediaPipe erra quando a mão está de lado. Agora esse voto é ignorado nessa posição, há zona morta para não trocar no meio do giro, e duas mãos com o mesmo rótulo são corrigidas. Isso evita a mão "virar do avesso".
+  * Dedos esticando: o comprimento de cada osso é limitado a ±15-20% do tamanho real medido pelos pontos 3D (a mão não muda de tamanho ao girar).
+  * Pinça: a profundidade (medida mais ruidosa) pesa 60% e os limites ficaram um pouco mais folgados (fecha em ~3,2 cm, solta em ~4,8 cm).
+  * Ajustes > Rastreamento > "Sensibilidade do rastreio" (Estável / Normal / Sensível). Sensível segura a mão em poses difíceis; teste e veja qual funciona melhor. Para poses difíceis, "Precisão: Alta" também ajuda bastante.
+
+- Arquivo novo: js/surface.js. Alterados: ui_kit.js (ícone, ui.D, painéis fixos), core.js (ajustes novos), menu.js, youtube.js, index.html.
+
+VR Protótipo v24 - CONTROLE BLUETOOTH
+- NOVO: Ajustes > Controles (ícone de controle). Ao lado da imagem do controle ficam as caixinhas Pular e Agachar: toque na caixinha, aperte o botão do controle e ele fica salvo. O X ao lado limpa. O analógico serve só para andar.
+- Agachar: "Segurar" (agacha enquanto aperta) ou "Alternar". Pular: pulo curto; no Beat Saber os blocos não sobem junto com o pulo.
+- Funciona com controle em modo gamepad e em modo teclado (muitos controles de óculos VR). Setas/WASD ficam reservadas para andar. No PC, sem nada configurado: Espaço pula, C agacha.
+- Pareie o controle antes em Ajustes > Bluetooth do iPhone. Se nada aparecer em "Último botão apertado", troque o modo do controle (Android/iOS).
+- Arquivo novo: js/controls.js. Para gerar o IPA: suba tudo para o GitHub e rode Actions > Build IPA.
+
+VR Protótipo v23 - Quarto 3D + Ping-Pong + Beat Saber + Sinuca
+
+O QUE MUDOU
+- Rastreamento melhorado (v23): suavização adaptativa (acompanha rápido quando a mão se move e fica firme quando parada, com menos atraso); soltar a pinça só vale se persistir ~45 ms (menos aberturas falsas na hora de tacar; apertar continua imediato); câmera tenta foco, exposição e balanço de branco contínuos (onde o navegador permitir).
+- NOVO: Sinuca (bola 8) contra o bot (Ambientes > Sinuca, ou Ajustes > Sinuca > Jogar). Mesa 3D com 6 caçapas, taco, bolas numeradas (lisas e listradas), placar e regras completas: quebra, grupo definido pela primeira bola encaçapada, falta com bola na mão, bola 8 no final, vitória/derrota.
+  Como jogar: aponte o dedo para onde quer bater (a linha de mira sai da bola branca), junte polegar e indicador (pinça) e AFASTE a mão segurando (quanto mais longe, mais força), solte para tacar. Voltar ao ponto inicial antes de soltar cancela. Com a bola na mão, aponte e pince para posicioná-la.
+  Ajustes: dificuldade do bot (Fácil, Médio, Difícil, Expert), linha de mira, ajuda de mira, mão que taca, altura da mesa. PC sem mãos: mouse aponta, segure e arraste; teclas 1-4 nível, N nova partida.
+  Arquivos novos: js/sinsim.js (física, regras e IA) e js/sinuca.js (visual e entrada).
+- NOVO: Beat Saber (Ambientes > Beat Saber, ou Ajustes > Beat Saber > Jogar). Opção de 1 SABRE ou 2 SABRES (vermelho = mão esquerda, azul = mão direita; com 1 sabre todos os blocos têm a cor do seu sabre e a mão é Auto/Direita/Esquerda). Os sabres ficam presos às suas mãos, com rastro de luz.
+  No lobby, corte os botões com o sabre: MÚSICA, NÍVEL, 1 SABRE, 2 SABRES e JOGAR. Corte cada bloco na direção da seta (ponto = qualquer direção) e desvie das bombas. Placar, combo, multiplicador x1/x2/x4/x8, energia, nota (SS a E) e recorde por música/nível/modo.
+  3 músicas sintetizadas na hora (Neon Pulse, Cyber Drive, Laser Storm) e 4 níveis (Fácil, Normal, Difícil, Expert); as fases são geradas no ritmo da música.
+  Ajustes: bombas, cortar na direção da seta, sem falhar, volume, altura e espaçamento dos blocos, comprimento do sabre, velocidade mínima do corte, ajuste de atraso.
+  PC sem mãos: o sabre segue o mouse; Tab troca de sabre, 1/2 escolhem o modo, Enter começa, Esc sai da partida.
+  Arquivos novos: js/bsmusic.js (música, sons e gerador de fases) e js/bs.js (jogo).
+- NOVO: Ping-Pong contra a IA (Ambientes > Ping-Pong, ou Ajustes > Ping-Pong > Jogar). A raquete fica presa à sua mão ABERTA (não precisa fechar): com a palma virada para a IA, empurre a mão para frente para bater. No saque, acerte a bolinha que flutua à sua frente (anel azul).
+  Dificuldade (Fácil, Médio, Difícil, Expert), "jogar até" 5/7/11/21, ajuda de mira, escolha da mão (auto/direita/esquerda), mesa que acompanha a altura da sua mão ou altura fixa. Teclas no PC: 1-4 dificuldade, N nova partida; sem mãos a raquete segue o mouse.
+  Regras: saque alterna a cada 2 pontos (a cada 1 no empate), vence quem chegar ao total com 2 de vantagem; bola na rede, fora ou que quica 2 vezes do lado do adversário dá ponto. Voleio (bater antes de quicar) é permitido. O jogo pausa com o menu aberto ou sem mão visível.
+  Arquivos novos: js/pongsim.js (regras, física e IA) e js/pong.js (visual e mão → raquete).
+- Mão realista (nova): malha 3D com dedos, unhas, polegar e pele, deformada por esqueleto sobre os pontos rastreados. Ajustes > Mãos (5 tons de pele). Contorno, Ossos e Oculta continuam.
+- Menu estilo Meta Quest DENTRO do VR: dock inferior, Ajustes rápidos, Configurações (7 categorias), Ambientes e YouTube. Tudo se opera com pinça (apontar + juntar polegar e indicador), arrastar sliders/lista com a pinça segurada, arrastar janelas pela barrinha. Também funciona por toque na tela. A tela inicial ficou só com Iniciar + link do YouTube.
+- Quarto 3D interativo (ambiente padrão): janela com a vista do panorama, interruptor, abajures, TV, monitor, porta, cortinas, dia/noite e 15 objetos para pegar/jogar (de perto com a mão fechada ou pinça; de longe apontando + pinça, aproximando/afastando a mão).
+- Removidos: criar boneco, sangue, facão, mesa com martelo/bazuca. A cidade destrutível continua como um ambiente opcional (sem ferramentas: pegue e jogue os blocos).
+- Rastreamento/FPS/atraso: câmera até 60 fps; MediaPipe só roda quando chega quadro novo (sem quadros repetidos); filtro One-Euro + antecipação (ms) + suavização por quadro; profundidade e pinça medidas em metros pelos pontos 3D; modelo "Alta precisão" agora incluso; taxa de rastreamento e resolução automáticas conforme o FPS; predição de movimento da cabeça e suavização adaptativa; configurações salvas no aparelho.
+
+ATALHOS (PC): M menu, R recentralizar, H modo OBS, V modo VR, WASD andar.
+Menu fechado: botão redondo embaixo da visão (pinça), botão ☰ ou segurar o dedo 1 s na tela.
+Hospede em HTTPS (como antes). Os arquivos de js/ têm ?v=23 para evitar cache antigo.
+
+IPA (iPhone) VIA GITHUB
+- A pasta ios/ e o arquivo .github/workflows/build-ipa.yml montam o app: um WebView com um servidor local dentro do app, que abre este mesmo site (câmera, mãos, sensores e som funcionam).
+- Suba tudo para um repositório no GitHub, aba Actions > Build IPA > Run workflow. Ao terminar, baixe o artefato SKZ-VR-ipa (SKZ-VR.ipa) e instale com o Sideloadly.
+- Toda vez que você trocar arquivos do site (js/, index.html...), é só enviar de novo e rodar o workflow: o site é copiado para dentro do app automaticamente.
+- Ícone do app: ios/Assets.xcassets/AppIcon.appiconset/icon-1024.png (também usado em icons/).
+
+
+=== CUIDADOS DOS BICHOS (ZHOPPE) ===
+- Toque no bicho: o menu agora mostra as barras Fome, Sede, Energia e Felicidade (e o humor dele).
+- Casinhas: cachorro (vermelha, "AUAU") e gato (azul, "MIAU") no quintal, atrás da garagem. Eles dormem lá à noite
+  (e quando a Energia está baixa) e acordam de dia, ou se você tocar neles.
+- Potes: pote vermelho = ração, pote azul = água. Dá para pegar e mover (se virar de cabeça para baixo, derrama).
+- Ração: compre "RAÇÃO PET 1KG" no mercado (prateleira de baixo da gôndola 3), leve para casa e SOLTE o pacote em cima do pote vermelho.
+- Água: leve o pote azul até a torneira (parede dos fundos da garagem, à direita da janela), clique no volante vermelho
+  para abrir e deixe o pote embaixo do jato. Clique de novo para fechar (fecha sozinha em 45 s).
+- Os bichos vão ao pote sozinhos quando estão com fome/sede (balãozinho 🍖 / 💧 em cima deles quando está crítico).
+- Arquivos: js/petcare.js (novo), js/zhoppe.js, js/mercado.js.
+
+=== SOM NO IPHONE (fone Bluetooth) E CONTROLE NO PC ===
+- O som do jogo sai no iPhone (app SKZ VR), não nas caixas do PC. Conecte o fone Bluetooth no iPhone.
+- IMPORTANTE: o app do iPhone precisa ser recompilado (push no GitHub gera o novo SKZ-VR.ipa) para a correção do áudio valer.
+- O controle fica no PC: a janela do jogo no PC precisa estar em foco (o navegador só lê o controle assim). Se perder o foco,
+  aparece um aviso no canto da janela do PC; clique nela. O aviso "Som parado" aparece se o navegador bloquear o som: clique uma vez na janela.
